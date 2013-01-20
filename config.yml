@@ -1,0 +1,11 @@
+# CreativeWorld
+
+World:
+  CreativeMake: True
+  CreativeName: creative
+  CreativeType: flat
+  CreativeSeed: ''
+Commands:
+  IntereceptGM: True
+Version:
+  ConfigYMLVer: 1

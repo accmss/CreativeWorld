@@ -1,0 +1,16 @@
+name: CreativeWorld
+main: com.accmss.creativeworld.CreativeWorld
+version: 1.5.5
+description: CreativeWorld permissions.
+
+commands:
+   creative:
+      description: Warps player to creative world.
+      usage: /creative
+      permission: creativeworld.warp
+      permisison-message: You don't have permissions
+   survival:
+      description: Warps player to survival world.
+      usage: /survival
+      permission: creativeworld.warp
+      permisison-message: You don't have permissions
