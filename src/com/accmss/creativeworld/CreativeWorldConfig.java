@@ -81,12 +81,20 @@ public static void SetSlash(String file)
 private static void EnsureConfig()
 {
 
+	File fileDir = new File("plugins" + SlashChar + "CreativeWorld");
 	String zFile = "plugins" + SlashChar + "CreativeWorld" + SlashChar + "config.yml";
 	File f = new File(zFile);
 
+		//Directory
+		if (!fileDir.exists())
+		{
+		fileDir.mkdir();
+		}
+	
+		//File
 		if(!f.isFile())
 		{ 
-		CreativeWorldLib.Chat(CreativeWorld.zPlugin.getServer().getConsoleSender(), "BlockUndo", "§fWriting new configuration.yml.");
+		CreativeWorldLib.Chat(CreativeWorld.zPlugin.getServer().getConsoleSender(), "CreativeWorld", "§fWriting new configuration.yml.");
 		CreateConfig(zFile);
 		}
 		else
@@ -94,7 +102,7 @@ private static void EnsureConfig()
 		CreativeWorld.zConfig = CreativeWorld.zPlugin.getConfig();
 		}
 
-		//Update config
+		//Update
 	    try
 	    {ConfigYMLVer = CreativeWorld.zConfig.getInt("Version.ConfigYMLVer", ConfigYMLVer);}
 		catch (Exception e)
