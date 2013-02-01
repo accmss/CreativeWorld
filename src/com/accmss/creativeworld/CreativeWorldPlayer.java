@@ -36,7 +36,8 @@ public void onPlayerCommandPreprocess (PlayerCommandPreprocessEvent event)
 	if (!CreativeWorldConfig.IntereceptGM) return;
 	
 		if (event.getMessage().toLowerCase().startsWith("/gamemode") || event.getMessage().toLowerCase().startsWith("/gm") ||
-				event.getMessage().toLowerCase().startsWith("/gmt") || event.getMessage().toLowerCase().startsWith("/give"))
+				event.getMessage().toLowerCase().startsWith("/gmt") || event.getMessage().toLowerCase().startsWith("/give")
+				 || event.getMessage().toLowerCase().startsWith("/defaultgamemode"))
 		{
 		event.setCancelled(true);
 		}
