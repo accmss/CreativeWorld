@@ -32,9 +32,6 @@ public void onEnable() {
 	//Settings
 	CreativeWorldConfig.LoadSettings(zPlugin.getFile().getAbsolutePath());
 
-	//Autogen
-	CreativeWorldLib.WorldAutoGen();	
-
 		//Metrics
 		try
 		{
@@ -48,6 +45,8 @@ public void onEnable() {
 	getServer().getPluginManager().registerEvents(new CreativeWorldPlayer(this), this);
 	getServer().getPluginManager().registerEvents(new CreativeWorldEntity(this), this);
 
+	//Autogen
+	CreativeWorldLib.WorldAutoGen();	
 }
 @Override
 public void onDisable() 

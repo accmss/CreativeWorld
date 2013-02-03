@@ -243,7 +243,7 @@ public static void WorldAutoGen()
 
 		if(CreativeWorld.zPlugin.getServer().getWorld(CreativeWorldConfig.CreativeName) == null)
 		{
-		Chat(CreativeWorld.zPlugin.getServer().getConsoleSender(),"Creating World: ", CreativeWorldConfig.CreativeName);
+		Chat(CreativeWorld.zPlugin.getServer().getConsoleSender(),"CreatingWorld", "§fCreating world " + CreativeWorldConfig.CreativeName);
 		WorldCreator wc = new WorldCreator(CreativeWorldConfig.CreativeName);
 			//FLAT
 			if (CreativeWorldConfig.CreativeType.equalsIgnoreCase("flat"))
