@@ -9,7 +9,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
+
 
 
 
@@ -26,6 +28,29 @@ Player player;
 public CreativeWorldPlayer(CreativeWorld plugin) 
 {
 	
+}
+@EventHandler (priority = EventPriority.NORMAL)
+public void onPlayerRespawn(final PlayerRespawnEvent event)
+{
+
+	CreativeWorld.zPlugin.getServer().getScheduler().runTaskLaterAsynchronously(CreativeWorld.zPlugin, new Runnable()
+	{
+		
+		public void run()
+		{   
+		World world = event.getPlayer().getWorld();
+			if (!world.getName().equalsIgnoreCase(CreativeWorldConfig.CreativeName)) 
+			{
+			event.getPlayer().setGameMode(GameMode.SURVIVAL);
+			CreativeWorldLib.PlayerEnsureSurvival(event.getPlayer(), world.getName());	
+			}
+
+		}
+
+	}, 2L); 
+
+	
+
 }
 
 @EventHandler (priority = EventPriority.NORMAL)
@@ -58,8 +83,8 @@ public void playerTeleport(PlayerTeleportEvent event)
 
 		if (!world.getName().equalsIgnoreCase(CreativeWorldConfig.CreativeName)) 
 		{
-		if (event.getPlayer().hasPermission("creativeworld.gamemode")) event.getPlayer().setGameMode(GameMode.SURVIVAL);
-		if (event.getPlayer().hasPermission("creativeworld.warp"))	   CreativeWorldLib.PlayerEnsureSurvival(event.getPlayer(), world.getName());
+			if (event.getPlayer().hasPermission("creativeworld.gamemode")) event.getPlayer().setGameMode(GameMode.SURVIVAL);
+			if (event.getPlayer().hasPermission("creativeworld.warp"))	   CreativeWorldLib.PlayerEnsureSurvival(event.getPlayer(), world.getName());
 		}
 
 }

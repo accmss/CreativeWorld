@@ -25,9 +25,11 @@ public class CreativeWorldLib {
 
 
 public static Map<String, String> playerGear = new HashMap<String, String>();
+//public static HashMap<String, ItemStack> armour = new HashMap<String, List<ItemStack>>();
+//public static HashMap<String, ArrayList<Block>> armour = new HashMap<String, ArrayList<Block>>();
+//public static HashMap<String, List<ItemStack>> armour = new HashMap<String, List<ItemStack>>();
 
 
-//C
 //LOGGING
 public static void Chat(CommandSender sender, String PluginName, String message)
 {
@@ -42,8 +44,6 @@ public static void LogCommand(String player, String command){
 }
 
 
-
-
 //INVENTORY
 public static void InventoryRestore(Player player)
 {
@@ -55,12 +55,29 @@ public static void InventoryRestore(Player player)
 		player.getInventory().setContents(i.getContents());
 		CreativeWorldLib.Chat(player, "CreativeWorld", "Inventory loaded");
 		playerGear.remove(player.getName());
+		
+
+		/*
+		//RESTORE ARMOUR
+		String pname = player.getName();
+			if(armour.containsKey(pname));
+			{
+				for(ItemStack it : armour.get(pname))
+				{
+				player.getInventory().addItem(it);
+				}
+			}
+
+*/
+		
 		}
 
-
+		
 }
 public static void InventorySave(Player player)
 {
+
+	
 	
 		//quick check to prevent wiping of inventorys when /creative is called twice
 		if(playerGear.containsKey(player.getName()))
@@ -74,9 +91,27 @@ public static void InventorySave(Player player)
 	
 	CreativeWorldLib.Chat(player, "CreativeWorld", "Inventory saved");
 	playerGear.put(player.getName(), InventoryToString(player.getInventory()));
+
+	/*
+	//SAVE ARMOUR
+	String pname = player.getName();
+	List<ItemStack> list = new ArrayList<ItemStack>();
+		for(ItemStack it : player.getInventory().getArmorContents())
+		{
+			if(it != null)
+			{
+			list.add(it);
+			}
+		}
+	if(!list.isEmpty())
+	{
+	armour.put(pname, list);
+	}
+*/
+	
 	player.getInventory().clear();
 
-
+	
 }
 public static String InventoryToString (Inventory invInventory)
 {
@@ -185,7 +220,7 @@ public static void PlayerSetCreative(Player player)
 	
 	worldC = CreativeWorld.zPlugin.getServer().getWorld(CreativeWorldConfig.CreativeName).getSpawnLocation();
 	worldC.setWorld(CreativeWorld.zPlugin.getServer().getWorld(CreativeWorldConfig.CreativeName));
-	player.teleport(worldC,TeleportCause.ENDER_PEARL);
+	player.teleport(worldC,TeleportCause.COMMAND);
 	
 	//save inventory
 	InventorySave(player);
@@ -199,7 +234,7 @@ Location worldC;
 
 	worldC = CreativeWorld.zPlugin.getServer().getWorld(CreativeWorld.zPlugin.getServer().getWorlds().get(0).getName()).getSpawnLocation();
 	worldC.setWorld(CreativeWorld.zPlugin.getServer().getWorld(CreativeWorld.zPlugin.getServer().getWorlds().get(0).getName()));
-	player.teleport(worldC,TeleportCause.ENDER_PEARL);
+	player.teleport(worldC,TeleportCause.COMMAND);
 	InventoryRestore(player);
 	CreativeWorldLib.Chat(player, "CreativeWorld", ChatColor.GREEN + "Warping to " + worldC.getWorld().getName() + ".");
 
