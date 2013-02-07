@@ -77,7 +77,9 @@ Player player;
 		
 		if (cmd.getName().equalsIgnoreCase("creative"))
 		{
+		//CreativeWorldLib.LogCommand(sender.getName(), "setting creative mode");
 		if (player.hasPermission("creativeworld.gamemode")) player.setGameMode(GameMode.CREATIVE);
+		//CreativeWorldLib.LogCommand(sender.getName(), "warping creative");
 		if (player.hasPermission("creativeworld.warp"))	   CreativeWorldLib.PlayerSetCreative(player);
 		return true;
 		}
@@ -89,8 +91,9 @@ Player player;
 		return true;
 		}
 
+		CreativeWorldLib.LogCommand(sender.getName(), cmd.toString());
 	return false;
-	
+
 }
 
 

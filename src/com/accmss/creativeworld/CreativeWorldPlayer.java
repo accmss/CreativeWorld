@@ -64,6 +64,7 @@ public void onPlayerCommandPreprocess (PlayerCommandPreprocessEvent event)
 				event.getMessage().toLowerCase().startsWith("/gmt") || event.getMessage().toLowerCase().startsWith("/give")
 				 || event.getMessage().toLowerCase().startsWith("/defaultgamemode"))
 		{
+		//CreativeWorldLib.Chat(event.getPlayer(), "CreativeWorld",  "Cancelled command: " + event.getMessage().toLowerCase());
 		event.setCancelled(true);
 		}
 
@@ -79,10 +80,11 @@ public void playerTeleport(PlayerTeleportEvent event)
 		if (!CreativeWorldConfig.IntereceptGM) return;
 	
 	World world = event.getTo().getWorld();
-	//CreativeWorldLib.Chat(event.getPlayer(), "CreativeWorld",  "Reason: " + event.getCause().toString());
+
 
 		if (!world.getName().equalsIgnoreCase(CreativeWorldConfig.CreativeName)) 
 		{
+			//CreativeWorldLib.Chat(event.getPlayer(), "CreativeWorld",  "Reason: " + event.getCause().toString());
 			if (event.getPlayer().hasPermission("creativeworld.gamemode")) event.getPlayer().setGameMode(GameMode.SURVIVAL);
 			if (event.getPlayer().hasPermission("creativeworld.warp"))	   CreativeWorldLib.PlayerEnsureSurvival(event.getPlayer(), world.getName());
 		}

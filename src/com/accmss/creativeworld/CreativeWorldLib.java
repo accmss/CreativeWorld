@@ -220,7 +220,7 @@ public static void PlayerSetCreative(Player player)
 	
 	worldC = CreativeWorld.zPlugin.getServer().getWorld(CreativeWorldConfig.CreativeName).getSpawnLocation();
 	worldC.setWorld(CreativeWorld.zPlugin.getServer().getWorld(CreativeWorldConfig.CreativeName));
-	player.teleport(worldC,TeleportCause.COMMAND);
+	player.teleport(worldC,TeleportCause.ENDER_PEARL);
 	
 	//save inventory
 	InventorySave(player);
@@ -234,7 +234,7 @@ Location worldC;
 
 	worldC = CreativeWorld.zPlugin.getServer().getWorld(CreativeWorld.zPlugin.getServer().getWorlds().get(0).getName()).getSpawnLocation();
 	worldC.setWorld(CreativeWorld.zPlugin.getServer().getWorld(CreativeWorld.zPlugin.getServer().getWorlds().get(0).getName()));
-	player.teleport(worldC,TeleportCause.COMMAND);
+	player.teleport(worldC,TeleportCause.ENDER_PEARL);
 	InventoryRestore(player);
 	CreativeWorldLib.Chat(player, "CreativeWorld", ChatColor.GREEN + "Warping to " + worldC.getWorld().getName() + ".");
 
