@@ -18,35 +18,37 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class CreativeWorld extends JavaPlugin  {
 
-	public static CreativeWorld zPlugin;
-	protected static FileConfiguration zConfig;
-	public static Logger zLogger = Logger.getLogger("Minecraft");
+public static CreativeWorld zPlugin;
+protected static FileConfiguration zConfig;
+public static Logger zLogger = Logger.getLogger("Minecraft");
 
 
 
 @Override
 public void onEnable() {
 
-	zPlugin = this;
-
-	//Settings
-	CreativeWorldConfig.LoadSettings(zPlugin.getFile().getAbsolutePath());
-
+	
 		//Metrics
 		try
 		{
 		CreativeWorldMetricsLite metrics = new CreativeWorldMetricsLite(this);
 		metrics.start();
 		} catch (IOException e) {
-		CreativeWorldLib.Chat(CreativeWorld.zPlugin.getServer().getConsoleSender(),"[MetricsLite]", e.getCause() + " : " + e.getMessage());
+		CreativeWorldLib.Chat(CreativeWorld.zPlugin.getServer().getConsoleSender(),"MetricsLite", e.getCause() + " : " + e.getMessage());
 		}
 
+	zPlugin = this;
+		
+	//Settings
+	CreativeWorldConfig.LoadSettings(this.getFile().getAbsolutePath());
+	
 	//Listners
 	getServer().getPluginManager().registerEvents(new CreativeWorldPlayer(this), this);
 	getServer().getPluginManager().registerEvents(new CreativeWorldEntity(this), this);
 
 	//Autogen
-	CreativeWorldLib.WorldAutoGen();	
+	CreativeWorldLib.WorldAutoGen();
+
 }
 @Override
 public void onDisable() 
@@ -64,7 +66,7 @@ public boolean onCommand(CommandSender sender, Command cmd, String commandLabel,
 
 Player player;
 
-		if(sender instanceof Player)
+		if ((sender instanceof Player))
 		{
 		player = (Player)sender;
 		//CreativeWorldLib.LogCommand(player.getName(), cmd.toString());

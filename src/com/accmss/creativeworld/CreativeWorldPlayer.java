@@ -78,6 +78,9 @@ public void playerTeleport(PlayerTeleportEvent event)
 
 		//NEW Ticket #1
 		if (!CreativeWorldConfig.IntereceptGM) return;
+		
+		//NEw exit if they are teleporting from world to world
+		if (event.getFrom().getWorld().getName().equalsIgnoreCase(event.getTo().getWorld().getName())) return;
 	
 	World world = event.getTo().getWorld();
 

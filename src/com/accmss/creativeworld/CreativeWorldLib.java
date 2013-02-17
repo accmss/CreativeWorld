@@ -78,7 +78,6 @@ public static void InventorySave(Player player)
 {
 
 	
-	
 		//quick check to prevent wiping of inventorys when /creative is called twice
 		if(playerGear.containsKey(player.getName()))
 		{

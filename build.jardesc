@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
 <jardesc>
-    <jar path="z:/mc2.auzcraft.com/plugins/CreativeWorld.jar"/>
+    <jar path="z:/mc2.mijang.net/plugins/CreativeWorld.jar"/>
     <options buildIfNeeded="true" compress="false" descriptionLocation="/CreativeWorld/build.jardesc" exportErrors="false" exportWarnings="false" includeDirectoryEntries="false" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
