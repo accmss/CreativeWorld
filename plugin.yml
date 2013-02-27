@@ -1,6 +1,6 @@
 name: CreativeWorld
 main: com.accmss.creativeworld.CreativeWorld
-version: 1.5.7
+version: 1.6
 description: CreativeWorld permissions.
 
 commands:

@@ -34,7 +34,7 @@ public static Map<String, String> playerGear = new HashMap<String, String>();
 public static void Chat(CommandSender sender, String PluginName, String message)
 {
 
-	sender.sendMessage("[" + PluginName + "] " + message);
+	sender.sendMessage("" + PluginName + " " + message);
 	
 }
 public static void LogCommand(String player, String command){
